@@ -1,0 +1,15 @@
+﻿<Window x:Class="AppSettingsDummy.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:appSettingsDummy="clr-namespace:AppSettingsDummy" mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525"
+        d:DataContext="{d:DesignInstance appSettingsDummy:DummyVm}">
+    <Grid>
+        <StackPanel>
+            <TextBox Text="{Binding Name}"></TextBox>
+            <TextBox Text="{Binding Pos}"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>
