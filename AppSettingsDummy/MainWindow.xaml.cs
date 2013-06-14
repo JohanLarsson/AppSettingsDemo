@@ -20,10 +20,18 @@ namespace AppSettingsDummy
     /// </summary>
     public partial class MainWindow : Window
     {
+        private DummyVm _dummyVm;
+
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new DummyVm();
+            _dummyVm = new DummyVm();
+            this.DataContext = _dummyVm;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _dummyVm.SaveXmlPerson();
         }
     }
 }

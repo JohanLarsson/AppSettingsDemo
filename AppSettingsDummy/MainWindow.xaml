@@ -18,7 +18,7 @@
                         <Label>Age</Label>
                         <TextBox Text="{Binding XmlPerson.Age}"></TextBox>
                     </StackPanel>
-                    <Button>Save</Button>
+                    <Button Click="Button_Click">Save</Button>
                 </StackPanel>
             </GroupBox>
             <GroupBox Header="ConvertPerson">
