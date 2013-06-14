@@ -3,9 +3,9 @@
 namespace AppSettingsDummy
 {
     [SettingsSerializeAs(SettingsSerializeAs.Xml)]
-    public class Employee
+    public class XmlPerson
     {
         public string Name { get; set; }
-        public string Position { get; set; }
+        public int Age { get; set; }
     }
 }

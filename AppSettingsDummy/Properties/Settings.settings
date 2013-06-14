@@ -2,8 +2,15 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AppSettingsDummy.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DefaultEmployee" Type="AppSettingsDummy.Employee" Scope="Application">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;Employee xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;Name&gt;Andreas&lt;/Name&gt;&lt;Position&gt;Top&lt;/Position&gt;&lt;/Employee&gt;</Value>
+    <Setting Name="JohanXml" Type="AppSettingsDummy.XmlPerson" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;XmlPerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;Name&gt;JohanXml&lt;/Name&gt;
+  &lt;Age&gt;34&lt;/Age&gt;
+&lt;/XmlPerson&gt;</Value>
+    </Setting>
+    <Setting Name="JohanConvert" Type="AppSettingsDummy.ConverterPerson" Scope="Application">
+      <Value Profile="(Default)">Johan,34</Value>
     </Setting>
   </Settings>
 </SettingsFile>

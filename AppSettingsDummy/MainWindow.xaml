@@ -8,8 +8,33 @@
         d:DataContext="{d:DesignInstance appSettingsDummy:DummyVm}">
     <Grid>
         <StackPanel>
-            <TextBox Text="{Binding Name}"></TextBox>
-            <TextBox Text="{Binding Pos}"></TextBox>
+            <GroupBox Header="XmlPerson">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Name</Label>
+                        <TextBox Text="{Binding XmlPerson.Name}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Age</Label>
+                        <TextBox Text="{Binding XmlPerson.Age}"></TextBox>
+                    </StackPanel>
+                    <Button>Save</Button>
+                </StackPanel>
+            </GroupBox>
+            <GroupBox Header="ConvertPerson">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Name</Label>
+                        <TextBox Text="{Binding ConverterPerson.Name, Mode=OneWay}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label>Age</Label>
+                        <TextBox Text="{Binding ConverterPerson.Age, Mode=OneWay}"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
         </StackPanel>
+
+
     </Grid>
 </Window>

@@ -3,7 +3,10 @@ using System.ComponentModel;
 
 namespace AppSettingsDummy
 {
-    public class RoomConverter : TypeConverter
+    /// <summary>
+    /// http://www.blackwasp.co.uk/CustomAppSettings.aspx
+    /// </summary>
+    public class PersonConverter : TypeConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
@@ -16,10 +19,8 @@ namespace AppSettingsDummy
             if (value is string)
             {
                 string[] parts = ((string)value).Split(new char[] { ',' });
-                Room room = new Room();
-                room.RoomNumber = Convert.ToInt32(parts[0]);
-                room.Location = parts.Length > 1 ? parts[1] : null;
-                return room;
+                ConverterPerson converterPerson = new ConverterPerson(parts[0],int.Parse(parts[1]));
+                return converterPerson;
             }
             return base.ConvertFrom(context, culture, value);
         }
@@ -30,8 +31,8 @@ namespace AppSettingsDummy
         {
             if (destinationType == typeof(string))
             {
-                Room room = value as Room;
-                return string.Format("{0},{1}", room.RoomNumber, room.Location);
+                ConverterPerson converterPerson = value as ConverterPerson;
+                return string.Format("{0},{1}", converterPerson.Name, converterPerson.Age);
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }

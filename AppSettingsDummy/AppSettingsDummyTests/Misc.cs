@@ -9,21 +9,32 @@ using System.Xml.Serialization;
 using AppSettingsDummy;
 using NUnit.Framework;
 
+
 namespace AppSettingsDummyTests
 {
-    public class Class1
+    public class Misc
     {
         [Test]
         public void SerializepersonTest()
         {
-            var andreas = new Employee { Name = "Andreas", Position = "Top" };
+            var johan = new XmlPerson { Name = "JohanXml", Age = 34};
+            Console.WriteLine(johan.GetType().AssemblyQualifiedName);
             var sb = new StringBuilder();
-            var serializer = new XmlSerializer(andreas.GetType());
+            var serializer = new XmlSerializer(johan.GetType());
             using (var writer = new XmlTextWriter(new StringWriter(sb)))
             {
-                serializer.Serialize(writer, andreas);
+                serializer.Serialize(writer, johan);
                 Console.Write(sb);
             }
+        }
+
+        [Test]
+        public void ConvertPersonTest()
+        {
+            var johan = new ConverterPerson ( "JohanXml",  34 );
+            Console.WriteLine(johan.GetType().AssemblyQualifiedName);
+            var convertTo = new PersonConverter().ConvertTo(null, null, johan, null);
+            Console.WriteLine((string)convertTo);
         }
 
         [Test]

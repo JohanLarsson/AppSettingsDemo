@@ -1,48 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using AppSettingsDummy.Annotations;
-using AppSettingsDummy.Properties;
 
 namespace AppSettingsDummy
 {
-    public class DummyVm :INotifyPropertyChanged
+    public class DummyVm : INotifyPropertyChanged
     {
-
-
         public DummyVm()
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            //Properties.Settings.Default.SetValue(x=>x.DefaultEmployee,new Employee{Name = "Erik", Position = "Bottom"});
-            Properties.Settings.Default.Save();
-            var employee = Properties.Settings.Default.DefaultEmployee;
-
-            //var s = config.AppSettings["DefaultEmployee"];
-//            config.Save(ConfigurationSaveMode.Full);
-            Name = employee.Name;
-            Pos = employee.Position;
+            XmlPerson = Properties.Settings.Default.JohanXml;
+            ConverterPerson = Properties.Settings.Default.JohanConvert;
         }
-        private string _name;
-        public string Name
+        private XmlPerson _xmlPerson;
+        public XmlPerson XmlPerson
         {
-            get { return Properties.Settings.Default.DefaultEmployee.Name; }
+            get { return _xmlPerson; }
             set
             {
-                if (value == Properties.Settings.Default.DefaultEmployee.Name) return;
-                Properties.Settings.Default.DefaultEmployee.Name = value;
-                Properties.Settings.Default.Save();
+                if (Equals(value, _xmlPerson)) return;
+                _xmlPerson = value;
                 OnPropertyChanged();
             }
         }
 
-        public string Pos { get; set; }
+        private ConverterPerson _converterPerson;
+        public ConverterPerson ConverterPerson
+        {
+            get { return _converterPerson; }
+            set
+            {
+                if (Equals(value, _converterPerson)) return;
+                _converterPerson = value;
+                OnPropertyChanged();
+            }
+        }
 
+        public void SaveXmlPerson()
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            Properties.Settings.Default.SetValue(x => x.JohanXml, XmlPerson);
+            config.Save();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -51,15 +54,6 @@ namespace AppSettingsDummy
         {
             PropertyChangedEventHandler handler = PropertyChanged;
             if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    internal static class SettingsExt
-    {
-        public static void SetValue<T>(this Settings settings, Expression<Func<Settings,T>> property, T value)
-        {
-            string name = ((MemberExpression) property.Body).Member.Name;
-            settings[name] = value;
         }
     }
 }
