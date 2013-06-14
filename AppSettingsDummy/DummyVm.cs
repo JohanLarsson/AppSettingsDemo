@@ -43,8 +43,11 @@ namespace AppSettingsDummy
         public void SaveXmlPerson()
         {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            Properties.Settings.Default.SetValue(x => x.JohanXml, XmlPerson);
+            var section = config.GetSection("appSettings") as AppSettingsSection;
+            section.Settings["DummyString"].Value = "New";
             config.Save();
+            Properties.Settings.Default.SetValue(x => x.JohanXml, XmlPerson);
+            Properties.Settings.Default.Save();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

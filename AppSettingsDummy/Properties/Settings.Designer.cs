@@ -42,5 +42,14 @@ namespace AppSettingsDummy.Properties {
                 return ((global::AppSettingsDummy.ConverterPerson)(this["JohanConvert"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dummy string")]
+        public string DummyString {
+            get {
+                return ((string)(this["DummyString"]));
+            }
+        }
     }
 }

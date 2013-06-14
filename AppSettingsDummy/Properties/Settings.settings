@@ -12,5 +12,8 @@
     <Setting Name="JohanConvert" Type="AppSettingsDummy.ConverterPerson" Scope="Application">
       <Value Profile="(Default)">Johan,34</Value>
     </Setting>
+    <Setting Name="DummyString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Dummy string</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
