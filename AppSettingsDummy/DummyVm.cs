@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using AppSettingsDummy.Annotations;
+using AppSettingsDummy.Properties;
 
 namespace AppSettingsDummy
 {
@@ -40,14 +43,44 @@ namespace AppSettingsDummy
             }
         }
 
+        public string AppSettings
+        {
+            get
+            {
+                return File.ReadAllText(FilePath);
+            }
+        }
+
+        public DateTime LastSavedTime
+        {
+            get
+            {
+                return File.GetLastWriteTime(FilePath);
+            }
+        }
+
+        public string FilePath
+        {
+            get
+            {
+                var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                return config.FilePath;
+            }
+        }
+
         public void SaveXmlPerson()
         {
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            var section = config.GetSection("appSettings") as AppSettingsSection;
-            section.Settings["DummyString"].Value = "New";
-            config.Save();
+            //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //var section = config.GetSection("appSettings") as AppSettingsSection;
+            //section.Settings["DummyString"].Value = "New";
+            //config.Save();
             Properties.Settings.Default.SetValue(x => x.JohanXml, XmlPerson);
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            Settings settings = Properties.Settings.Default;
+            string settingsKey = settings.SettingsKey;
             Properties.Settings.Default.Save();
+            OnPropertyChanged("AppSettings");
+            OnPropertyChanged("LastSavedTime");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

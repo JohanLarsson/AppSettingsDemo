@@ -7,6 +7,10 @@
         Title="MainWindow" Height="350" Width="525"
         d:DataContext="{d:DesignInstance appSettingsDummy:DummyVm}">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="370*"/>
+        </Grid.ColumnDefinitions>
         <StackPanel>
             <GroupBox Header="XmlPerson">
                 <StackPanel>
@@ -34,7 +38,23 @@
                 </StackPanel>
             </GroupBox>
         </StackPanel>
-
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="147*"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalContentAlignment="Center">Last saved time</Label>
+                    <TextBox Text="{Binding LastSavedTime, Mode=OneWay, StringFormat=yyyy-MM-dd HH:mm:ss}" VerticalContentAlignment="Center" IsReadOnly="True"></TextBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label VerticalContentAlignment="Center">Filepath</Label>
+                    <TextBox Text="{Binding FilePath, Mode=OneWay}" VerticalContentAlignment="Center" IsReadOnly="True"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <TextBox Text="{Binding AppSettings, Mode=OneWay}" IsReadOnly="True" Grid.Row="1"/>
+        </Grid>
 
     </Grid>
 </Window>
