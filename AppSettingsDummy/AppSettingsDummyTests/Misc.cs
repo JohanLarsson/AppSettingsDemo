@@ -25,20 +25,13 @@ namespace AppSettingsDummyTests
         [Test]
         public void SerializeListOfPersonsTest()
         {
-            var persons = new ListOfPersons
+            var persons = new Persons
                 {
                     new XmlPerson {Name = "JohanXml", Age = 34},
                     new XmlPerson {Name = "Travis", Age = 34},
                     new XmlPerson {Name = "Drch", Age = 34}
                 };
-            Console.WriteLine(persons.GetType().FullName);
-            var sb = new StringBuilder();
-            var serializer = new XmlSerializer(persons.GetType());
-            using (var writer = new XmlTextWriter(new StringWriter(sb)))
-            {
-                serializer.Serialize(writer, persons);
-                Console.Write(sb);
-            }
+            DumpXml(persons);
         }
         
         private static void DumpXml<T>(T item)

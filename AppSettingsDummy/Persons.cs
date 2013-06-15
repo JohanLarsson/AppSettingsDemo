@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AppSettingsDummy
 {
-    public class ListOfPersons : List<XmlPerson>
+    public class Persons : List<XmlPerson>
     {
     }
 }

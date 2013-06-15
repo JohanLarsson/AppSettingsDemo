@@ -22,7 +22,7 @@ namespace AppSettingsDummy
             {
                 XmlPerson = Properties.Settings.Default.JohanXml;
                 ConverterPerson = Properties.Settings.Default.JohanConvert;
-                Persons = new ObservableCollection<XmlPerson>(Settings.Default.ListOfPersons);
+                Persons = new ObservableCollection<XmlPerson>(Settings.Default.Persons);
             }
             catch (Exception)
             {
