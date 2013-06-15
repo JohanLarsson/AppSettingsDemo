@@ -11,49 +11,64 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="370*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel>
-            <GroupBox Header="XmlPerson">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label>Name</Label>
-                        <TextBox Text="{Binding XmlPerson.Name}"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label>Age</Label>
-                        <TextBox Text="{Binding XmlPerson.Age}"></TextBox>
-                    </StackPanel>
-                    <Button Click="Button_Click">Save</Button>
-                </StackPanel>
-            </GroupBox>
-            <GroupBox Header="ConvertPerson">
-                <StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label>Name</Label>
-                        <TextBox Text="{Binding ConverterPerson.Name, Mode=OneWay}"></TextBox>
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal">
-                        <Label>Age</Label>
-                        <TextBox Text="{Binding ConverterPerson.Age, Mode=OneWay}"></TextBox>
-                    </StackPanel>
-                </StackPanel>
-            </GroupBox>
-        </StackPanel>
-        <Grid Grid.Column="1">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="147*"/>
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label VerticalContentAlignment="Center">Last saved time</Label>
-                    <TextBox Text="{Binding LastSavedTime, Mode=OneWay, StringFormat=yyyy-MM-dd HH:mm:ss}" VerticalContentAlignment="Center" IsReadOnly="True"></TextBox>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Label VerticalContentAlignment="Center">Filepath</Label>
-                    <TextBox Text="{Binding FilePath, Mode=OneWay}" VerticalContentAlignment="Center" IsReadOnly="True"></TextBox>
-                </StackPanel>
-            </StackPanel>
-            <TextBox Text="{Binding AppSettings, Mode=OneWay}" IsReadOnly="True" Grid.Row="1"/>
+            <GroupBox Header="XmlPerson" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0">Name</Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding XmlPerson.Name}"></TextBox>
+                    <Label Grid.Row="1" Grid.Column="0">Age</Label>
+                    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding XmlPerson.Age}"></TextBox>
+                    <Button Grid.Row="2" Grid.Column="2" Click="Button_Click">Save</Button>
+                </Grid>
+            </GroupBox>
+            <GroupBox Header="ConvertPerson" Grid.Row="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" >Name</Label>
+                    <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding ConverterPerson.Name, Mode=OneWay}"></TextBox>
+
+                    <Label Grid.Row="1" Grid.Column="0" >Age</Label>
+                    <TextBox Grid.Row="1" Grid.Column="1"  Text="{Binding ConverterPerson.Age, Mode=OneWay}"></TextBox>
+                </Grid>
+            </GroupBox>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center">Last saved time</Label>
+            <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding LastSavedTime, Mode=OneWay, StringFormat=yyyy-MM-dd HH:mm:ss}" VerticalContentAlignment="Center" IsReadOnly="True"/>
+            <Label Grid.Row="1" Grid.Column="0" VerticalContentAlignment="Center">Filepath</Label>
+            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding FilePath, Mode=OneWay}" VerticalContentAlignment="Center" IsReadOnly="True"/>
+            <TextBox Text="{Binding AppSettings, Mode=OneWay}" IsReadOnly="True" Grid.Row="2" Grid.ColumnSpan="2"/>
         </Grid>
 
     </Grid>

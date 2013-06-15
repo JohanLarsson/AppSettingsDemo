@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.Configuration;
 namespace AppSettingsDummy
 {
+    /// <summary>
+    /// http://www.blackwasp.co.uk/CustomAppSettings.aspx
+    /// </summary>
     [TypeConverter(typeof(PersonConverter))]
     [SettingsSerializeAs(SettingsSerializeAs.String)]
     public class ConverterPerson

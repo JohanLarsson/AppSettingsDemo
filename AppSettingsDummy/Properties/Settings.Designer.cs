@@ -25,17 +25,6 @@ namespace AppSettingsDummy.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<XmlPerson xmlns:xsi=\"http://www.w3.org/" +
-            "2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <Name>" +
-            "JohanXml</Name>\r\n  <Age>34</Age>\r\n</XmlPerson>")]
-        public global::AppSettingsDummy.XmlPerson JohanXml {
-            get {
-                return ((global::AppSettingsDummy.XmlPerson)(this["JohanXml"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Johan,34")]
         public global::AppSettingsDummy.ConverterPerson JohanConvert {
             get {
@@ -49,6 +38,20 @@ namespace AppSettingsDummy.Properties {
         public string DummyString {
             get {
                 return ((string)(this["DummyString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"
+                    <XmlPerson xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+                        <Name>JohanXml</Name>
+                        <Age>34</Age>
+                    </XmlPerson>
+                ")]
+        public global::AppSettingsDummy.XmlPerson JohanXml {
+            get {
+                return ((global::AppSettingsDummy.XmlPerson)(this["JohanXml"]));
             }
         }
     }

@@ -13,10 +13,10 @@ namespace AppSettingsDummy
             settings[name] = value;
         }
 
-        public static void SetValue(this KeyValueConfigurationCollection collection, Expression<Func<KeyValueConfigurationCollection, string>> property, string value)
-        {
-            string name = ((MemberExpression)property.Body).Member.Name;
-            collection[name].Value = value;
-        }
+        //public static void SetValue(this KeyValueConfigurationCollection collection, Expression<Func<KeyValueConfigurationCollection, string>> property, string value)
+        //{
+        //    string name = ((MemberExpression)property.Body).Member.Name;
+        //    collection[name].Value = value;
+        //}
     }
 }
