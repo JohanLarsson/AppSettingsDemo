@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Configuration;
 using System.IO;
@@ -18,6 +19,7 @@ namespace AppSettingsDummy
         {
             XmlPerson = Properties.Settings.Default.JohanXml;
             ConverterPerson = Properties.Settings.Default.JohanConvert;
+            Persons = new ObservableCollection<XmlPerson>(Settings.Default.ListOfPersons);
         }
         private XmlPerson _xmlPerson;
         public XmlPerson XmlPerson
@@ -42,6 +44,8 @@ namespace AppSettingsDummy
                 OnPropertyChanged();
             }
         }
+
+        public ObservableCollection<XmlPerson> Persons { get; private set; }
 
         public string AppSettings
         {
@@ -71,17 +75,20 @@ namespace AppSettingsDummy
         public void SaveXmlPerson()
         {
             Properties.Settings.Default.SetValue(x => x.JohanXml, XmlPerson);
-            Properties.Settings.Default.Save(); //This does not save
+            Properties.Settings.Default.Save(); //This does not save anything for application scoped settings :(
             SaveTest();
             OnPropertyChanged("AppSettings");
             OnPropertyChanged("LastSavedTime");
         }
 
+        /// <summary>
+        /// Temp method for trying to figure out how to save
+        /// </summary>
         private void SaveTest()
         {
             var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             var appSettingsSection = config.AppSettings;
-            
+
             Settings settings = Properties.Settings.Default;
             string settingsKey = settings.SettingsKey;
 

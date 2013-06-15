@@ -54,6 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ListOfPersons.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="PersonConverter.cs" />
     <Page Include="MainWindow.xaml">
