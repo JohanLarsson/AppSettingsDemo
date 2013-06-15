@@ -8,6 +8,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using AppSettingsDummy.Annotations;
 using AppSettingsDummy.Properties;
 
@@ -17,9 +18,21 @@ namespace AppSettingsDummy
     {
         public DummyVm()
         {
-            XmlPerson = Properties.Settings.Default.JohanXml;
-            ConverterPerson = Properties.Settings.Default.JohanConvert;
-            Persons = new ObservableCollection<XmlPerson>(Settings.Default.ListOfPersons);
+            try
+            {
+                XmlPerson = Properties.Settings.Default.JohanXml;
+                ConverterPerson = Properties.Settings.Default.JohanConvert;
+                Persons = new ObservableCollection<XmlPerson>(Settings.Default.ListOfPersons);
+            }
+            catch (Exception)
+            {
+                string appData = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                MessageBox.Show("Error loading settings, perhaps removing the old user settings resolves it? path : " + appData, "Error loading settings");
+                
+                throw;
+            }
+
+
         }
         private XmlPerson _xmlPerson;
         public XmlPerson XmlPerson

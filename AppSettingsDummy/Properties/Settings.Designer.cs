@@ -55,15 +55,12 @@ namespace AppSettingsDummy.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?><ArrayOfXmlPerson xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""><XmlPerson><Name>JohanXml</Name><Age>34</Age></XmlPerson><XmlPerson><Name>Travis</Name><Age>34</Age></XmlPerson><XmlPerson><Name>Drch</Name><Age>34</Age></XmlPerson></ArrayOfXmlPerson>")]
         public global::AppSettingsDummy.ListOfPersons ListOfPersons {
             get {
                 return ((global::AppSettingsDummy.ListOfPersons)(this["ListOfPersons"]));
-            }
-            set {
-                this["ListOfPersons"] = value;
             }
         }
     }
