@@ -18,7 +18,7 @@ namespace AppSettingsDummyTests
         public void SerializepersonTest()
         {
             var johan = new XmlPerson { Name = "JohanXml", Age = 34};
-            Console.WriteLine(johan.GetType().AssemblyQualifiedName);
+            Console.WriteLine(johan.GetType().FullName);
             var sb = new StringBuilder();
             var serializer = new XmlSerializer(johan.GetType());
             using (var writer = new XmlTextWriter(new StringWriter(sb)))
@@ -31,13 +31,13 @@ namespace AppSettingsDummyTests
         [Test]
         public void ConvertPersonTest()
         {
-            var johan = new ConverterPerson ( "JohanXml",  34 );
-            Console.WriteLine(johan.GetType().AssemblyQualifiedName);
+            var johan = new ConverterPerson ( "JohanConvert",  34 );
+            Console.WriteLine(johan.GetType().FullName);
             var convertTo = new PersonConverter().ConvertTo(null, null, johan, null);
             Console.WriteLine((string)convertTo);
         }
 
-        [Test]
+        [Test, Explicit]
         public void SerializeDictionaryTest()
         {
             var dictionary = new Dictionary<string,string>

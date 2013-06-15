@@ -70,17 +70,25 @@ namespace AppSettingsDummy
 
         public void SaveXmlPerson()
         {
+            Properties.Settings.Default.SetValue(x => x.JohanXml, XmlPerson);
+            Properties.Settings.Default.Save(); //This does not save
+            SaveTest();
+            OnPropertyChanged("AppSettings");
+            OnPropertyChanged("LastSavedTime");
+        }
+
+        private void SaveTest()
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var appSettingsSection = config.AppSettings;
+            
+            Settings settings = Properties.Settings.Default;
+            string settingsKey = settings.SettingsKey;
+
             //var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             //var section = config.GetSection("appSettings") as AppSettingsSection;
             //section.Settings["DummyString"].Value = "New";
             //config.Save();
-            Properties.Settings.Default.SetValue(x => x.JohanXml, XmlPerson);
-            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            Settings settings = Properties.Settings.Default;
-            string settingsKey = settings.SettingsKey;
-            Properties.Settings.Default.Save();
-            OnPropertyChanged("AppSettings");
-            OnPropertyChanged("LastSavedTime");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
